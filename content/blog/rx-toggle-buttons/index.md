@@ -40,15 +40,12 @@ const source = interval(1000)
 const buttons = [g(source, 1), g(source, 2)]
 ```
 
-You can play with the visualization [here](https://rxviz.com/v/j8AnVy3o).
+You can play with the visualization ~~[here](https://rxviz.com/v/j8AnVy3o)~~ [rxviz.com](https://rxviz.com/), and the code can be found on [gitlab](https://gitlab.com/yassermzh/blog/blob/master/content/blog/rx-toggle-buttons/code.js).
 
 While creating the visualization, I realized the button streams I created above are
-cold observables. Here is one way I found to make them hot:
+cold observables. There are three streams: buttons 1, 2, and the result streams. However, as button 1 (or 2) stream is cold, it is different in the result stream. Here is one way I found to make them hot:
 
 ``` javascript
-const random = () => Math.floor(Math.random()* 10)
-const cold = interval(1000).pipe(map(random))
-
 const multicast = (source) => {
   const subject = new Subject();
   source.subscribe(subject);
