@@ -1,12 +1,14 @@
 module.exports = {
-  pathPrefix: `/blog`,
+  pathPrefix: `/`,
   siteMetadata: {
     title: `My Notes`,
     author: `Yasser Zadeh`,
     description: `Random topics about programming.`,
-    siteUrl: `https:/mintice/blog`,
+    siteUrl: `https:/yassermzh.github.io/`,
     social: {
       twitter: `yassermzh`,
+      linkedin: 'yasser-mohammadzadeh',
+      github: 'yassermzh',
     },
   },
   plugins: [
