@@ -7,7 +7,7 @@ tags: ['rxjs', 'javascript']
 To see how reduce function looks so similar to tail recursion implementation. Here we try to implement `sum` function given an array.
 
 The old school way using for-loop (the imperative style):
-```
+```javascript
 const sum = arr => {
   let acc = 0;
   for (let i=0; i<arr.length; i++) {
@@ -20,12 +20,12 @@ const sum = arr => {
 which involves assignments.
 
 In the `[].reduce` way (the functional programming style):
-```
+```javascript
 const sum = arr => arr.reduce((acc, x) => acc + x, 0);
 ```
 
 But how this relates to recursion:
-```
+```javascript
 const sum = arr => {
   if (arr.length == 0) return 0
   else {
@@ -36,7 +36,7 @@ const sum = arr => {
 ```
 Not similar. But what if we go with tail recursion:
 
-```
+```javascript
 const sum = arr => {
   const helper = (acc, _arr) => {
     if (_arr.length == 0) return acc;
@@ -50,7 +50,7 @@ const sum = arr => {
 ```
 Quite similar this time. Just need to extract the recursion part out as our own reduce function:
 
-```
+```javascript
 const reduce = (f, initialValue) => arr => {
   const helper = (acc, _arr) => {
     if (_arr.length == 0) return acc;
@@ -65,7 +65,6 @@ const reduce = (f, initialValue) => arr => {
 
 Now using above reduce, it almost the same as with `[].reduce`:
 
-```
+```javascript
 const sum = reduce((acc, x) => acc + x, 0)
 ```
-
